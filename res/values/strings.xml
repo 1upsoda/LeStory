@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Le Story</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="opening">Welcome!</string>
+    <string name="welcomeMessage">Hello, this is the current start message of the app! Enter your name and press that start button to start your adventure!</string>
+    <string name="startButtonText">Start</string>
+    <string name="userName">Johnny</string>
+    <string name="brokenText">If you are seeing this, something broken has probably happened</string>
+
+</resources>
