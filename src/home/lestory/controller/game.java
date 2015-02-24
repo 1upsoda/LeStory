@@ -10,18 +10,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import home.lestory.model.*;
+
 
 public class game extends Activity 
 {
 	private Button choice1, choice2, choice3, choice4, choice5, choice6, bigChoice1, bigChoice2;
 	private TextView story;
-	private StartActivity myActivity;
+	private String username;
+//	private StartActivity myActivity;
+	
+//	private UserName baseName;
+//	public game()
+//	{
+//		
+//	}
+//	public game(UserName baseName)
+//	{
+//		this.baseName = baseName;
+//	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
-		
+//		baseName = new UserName(userNameField.getText().toString());
 		choice1 = (Button) findViewById(R.id.choice1);
 		choice2 = (Button) findViewById(R.id.choice2);
 		choice3 = (Button) findViewById(R.id.choice3);
@@ -30,14 +44,20 @@ public class game extends Activity
 		choice6 = (Button) findViewById(R.id.choice6);
 		bigChoice1 = (Button) findViewById(R.id.bigChoice1);
 		bigChoice2 = (Button) findViewById(R.id.bigChoice2);
-		
+		String username = getIntent().getStringExtra("name"); 
+//		myActivity = new StartActivity();
 		story = (TextView) findViewById(R.id.Story);
-		story.setText("Hello " +myActivity.getName()+ "! You awake im room, wat do?");
+		
+		
+		
 		setupListeners();
 	}
 	
 	private void setupListeners()
 	{
+		/*" +myActivity.getName()+ "!  v    */
+		username = getIntent().getStringExtra("name"); 
+		story.setText("Hello, " +username+ "! You awake im room, wat do?");
 		choice1.setOnClickListener(new View.OnClickListener()
 		{
 			
