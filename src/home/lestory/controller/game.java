@@ -96,6 +96,7 @@ public class game extends Activity
 					choice3.setText("Spoon");
 					choice2.setText("Knife");
 					choice1.setText("Fork");
+					slideNumber = 3;
 				}
 				
 			}
