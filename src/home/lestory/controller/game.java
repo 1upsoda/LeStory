@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import home.lestory.model.*;
+
 
 
 public class game extends Activity 
@@ -18,6 +18,7 @@ public class game extends Activity
 	private Button choice1, choice2, choice3, choice4, choice5, choice6, bigChoice1, bigChoice2;
 	private TextView story;
 	private String username;
+	private int slideNumber;
 
 	
 	@Override
@@ -26,6 +27,7 @@ public class game extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 
+		slideNumber = 2;
 		choice1 = (Button) findViewById(R.id.choice1);
 		choice2 = (Button) findViewById(R.id.choice2);
 		choice3 = (Button) findViewById(R.id.choice3);
@@ -45,16 +47,37 @@ public class game extends Activity
 	
 	private void setupListeners()
 	{
-		
+		slideNumber =2;
 		username = getIntent().getStringExtra("name"); 
 		story.setText("Hello, " +username+ "! You awake im room, wat do?");
+		choice1.setText("Go back asleep");
+		choice2.setText("kill dragom");
+		setTitle("The Room");
+		choice2.setVisibility(View.VISIBLE);
+		choice1.setVisibility(View.VISIBLE);
+		choice3.setVisibility(View.INVISIBLE);
+		choice4.setVisibility(View.INVISIBLE);
+		choice5.setVisibility(View.INVISIBLE);
+		choice6.setVisibility(View.INVISIBLE);
+		bigChoice2.setVisibility(View.INVISIBLE);
+		bigChoice1.setVisibility(View.INVISIBLE);
 		choice1.setOnClickListener(new View.OnClickListener()
 		{
 			
 			@Override
 			public void onClick(View currentView)
 			{
-				// TODO Auto-generated method stub
+				if(slideNumber == 2)
+				{
+					setTitle("You sleep");
+					story.setText("you sleep and get kill by dragom");
+					choice3.setText("retry");
+					choice3.setVisibility(View.VISIBLE);
+					choice2.setVisibility(View.INVISIBLE);
+					choice1.setVisibility(View.INVISIBLE);
+					slideNumber = 4;
+				}
+				
 			}
 		});
 		choice2.setOnClickListener(new View.OnClickListener()
@@ -63,7 +86,18 @@ public class game extends Activity
 			@Override
 			public void onClick(View currentView)
 			{
-				// TODO Auto-generated method stub
+				if(slideNumber == 2)
+				{
+					setTitle("How Kill Dragom?");
+					story.setText("Different ways are available. To kill it. Yes.");
+					choice3.setVisibility(View.VISIBLE);
+					choice2.setVisibility(View.VISIBLE);
+					choice1.setVisibility(View.VISIBLE);
+					choice3.setText("Spoon");
+					choice2.setText("Knife");
+					choice1.setText("Fork");
+				}
+				
 			}
 		});
 		choice3.setOnClickListener(new View.OnClickListener()

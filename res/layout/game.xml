@@ -45,7 +45,6 @@
         android:layout_alignBaseline="@+id/choice2"
         android:layout_alignBottom="@+id/choice2"
         android:layout_centerHorizontal="true"
-        android:enabled="false"
         android:text="Button"
         android:textColor="@color/white"
         android:visibility="invisible" />
@@ -57,7 +56,6 @@
         android:layout_alignLeft="@+id/choice1"
         android:layout_below="@+id/choice1"
         android:layout_marginTop="15dp"
-        android:enabled="false"
         android:text="Button"
         android:textColor="@color/white"
         android:visibility="invisible" />
@@ -69,7 +67,6 @@
         android:layout_alignBaseline="@+id/choice5"
         android:layout_alignBottom="@+id/choice5"
         android:layout_alignLeft="@+id/choice3"
-        android:enabled="false"
         android:text="Button"
         android:textColor="@color/white"
         android:visibility="invisible" />
@@ -80,7 +77,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/choice2"
         android:layout_alignTop="@+id/choice4"
-        android:enabled="false"
         android:text="Button"
         android:textColor="@color/white"
         android:visibility="invisible" />
@@ -94,7 +90,6 @@
         android:layout_below="@+id/choice5"
         android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/choice4"
-        android:enabled="false"
         android:text="Button"
         android:textColor="@color/white"
         android:visibility="invisible" />
@@ -107,7 +102,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/bigChoice1"
         android:layout_toRightOf="@+id/choice4"
-        android:enabled="false"
         android:text="Button"
         android:textColor="@color/white"
         android:visibility="invisible" />
