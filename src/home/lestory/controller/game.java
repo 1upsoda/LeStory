@@ -77,6 +77,18 @@ public class game extends Activity
 					choice1.setVisibility(View.INVISIBLE);
 					slideNumber = 4;
 				}
+				else if(slideNumber == 5)
+				{
+					setTitle("Kill with Fork");
+					story.setText("You dash for a fork lying on the ground, as the mighty Dragom swoops dowm to take a bite out of your flesh. You skillfully dodge his powerful jaw by twisting your body exactly 96 degrees, and you crouch dowm and grab the fork with your right hand. The terrifying creature recovers from his missed blow, and strikes agaim. He lunges at you, and you raise your left arm in defence. He sinks his teeth deep into your forearm, and you let out a cry of pain as blood drips from your free arm, and into a red puddle om the stony ground below. You clench your jaw, and swallow the paim. The determined Dragom has a firm grip om your arm, and will not relinquish it. He tugs your arm, and you feel excruciating agony as your arm is nearly pulled from it’s socket. You realize you only have seconds before he devours you. Im a panic, you grasp the fork and drive it deep into the villainous beast’s skull. He sways as he tumbles over, but his hold om your arm has slackened, so you wrench your arm free. The hideous Dragom falls to the ground with a satisfying slump, but as you clutch your injured arm, you feel like you might faint. What do you do? TL;DR:You defeated dragom, you’re bleeding out. wat will u doo?");
+					choice3.setText("Inspect the Dragom");
+					choice2.setText("Contemplate writing a book about Dragoms");
+					choice1.setText("Seek medical attentiom");
+					choice3.setVisibility(View.VISIBLE);
+					choice2.setVisibility(View.VISIBLE);
+					choice1.setVisibility(View.VISIBLE);
+					slideNumber = 7;
+				}
 				
 			}
 		});
@@ -93,10 +105,10 @@ public class game extends Activity
 					choice3.setVisibility(View.VISIBLE);
 					choice2.setVisibility(View.VISIBLE);
 					choice1.setVisibility(View.VISIBLE);
-					choice3.setText("Spoon");
+					choice3.setText("Spoom");
 					choice2.setText("Knife");
 					choice1.setText("Fork");
-					slideNumber = 3;
+					slideNumber = 5;
 				}
 				
 			}
@@ -107,7 +119,13 @@ public class game extends Activity
 			@Override
 			public void onClick(View currentView)
 			{
-				// TODO Auto-generated method stub
+				if(slideNumber == 4)
+				{
+					slideNumber = 2;
+					Intent returnIntent = new Intent();
+					setResult(RESULT_OK, returnIntent);
+					finish();
+				}
 			}
 		});
 		choice4.setOnClickListener(new View.OnClickListener()
