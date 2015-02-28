@@ -45,7 +45,7 @@
         android:layout_centerVertical="true"
         android:background="@color/grey"
         android:ems="10"
-        android:text="Johnny"
+        android:text="JIMMY JOHN"
         android:textColor="@color/white" >
 
         <requestFocus />

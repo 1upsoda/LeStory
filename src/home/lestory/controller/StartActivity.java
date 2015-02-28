@@ -20,13 +20,14 @@ public class StartActivity extends Activity
 	
 	public String userName;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
 		
-		userName = "Johnny";
+		userName = "JIMMY JOHN";
 		startButton = (Button) findViewById(R.id.startButton);
 		userNameField = (EditText) findViewById(R.id.nameField);
 		
