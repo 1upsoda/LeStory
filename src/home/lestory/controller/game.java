@@ -149,7 +149,7 @@ public class game extends Activity
 				}
 				else if(slideNumber == 7)
 				{
-					
+					slideInfo(8, "Seek Medical Attentiom", "You press the “E” key in your mental keyboard to call out “Medic” in the hopes that someone om your team will come to your aid. You realize that you were never actually om a team, so this whole debacle is in vaim.", "Give up all hope...", "Contemplate writing book about dragoms", "none", "Inspect Dragom", "none", "none", "none", "none");
 				}
 				else if(slideNumber == 15)
 				{
@@ -202,6 +202,11 @@ public class game extends Activity
 					
 					slideInfo(5, "How Kill Dragom?", "Different ways are available. To kill it. Yes.", "Fork", "Knife", "Spoom", "none", "none", "none", "none", "none");
 				}
+				else if(slideNumber == 7)
+				{
+					choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
+					slideInfo(9, "Contemplate a Book", "You consider how lucky you are, ya know, to be alive. You think, “I might be famous for living through a dragom attack.” You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none", "retry", "none", "none", "Seriously though, write a book...", "none", "none");
+				}
 				
 			}
 		});
@@ -221,14 +226,7 @@ public class game extends Activity
 				}
 				else if(slideNumber == 5)
 				{
-					setTitle("Kill with spoom");
-					story.setText("wat were u thinking? you are dead now.");
-					choice3.setVisibility(View.VISIBLE);
-					choice2.setVisibility(View.INVISIBLE);
-					choice1.setVisibility(View.INVISIBLE);
-					choice3.setText("Retry");
-					
-					slideNumber = 4;
+					slideInfo(4, "Kill with spoom", "wat were u thinking? you are dead now.", "none", "none", "Retry", "none", "none", "none", "none", "none");
 				}
 				
 				
@@ -240,7 +238,12 @@ public class game extends Activity
 			@Override
 			public void onClick(View currentView)
 			{
-				// TODO Auto-generated method stub
+				if(slideNumber == 7)
+				{
+					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
+					slideInfo(10, "Inspect Dragom", "You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, “I am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.” What do you do now?", "Call his bluff", "Play his little game", "none", "none", "Ask if he went to Harvard or Yale", "none", "none", "none");
+
+				}
 			}
 		});
 		choice5.setOnClickListener(new View.OnClickListener()
@@ -251,16 +254,7 @@ public class game extends Activity
 			{
 				if(slideNumber == 73)
 				{
-					setTitle("No.");
-					story.setText("Well, while a pickle may be the most amazing thing ever, you can not kill a dragom with it.");
-					hasPickle = false;
-					choice3.setText("retry");
-					choice1.setText("Return to other options");
-					choice2.setVisibility(View.INVISIBLE);
-					choice5.setVisibility(View.INVISIBLE);
-					choice1.setVisibility(View.INVISIBLE);
-					choice3.setVisibility(View.VISIBLE);
-					slideNumber = 4;
+					slideInfo(4, "No.", "Well, while a pickle may be the most amazing thing ever, you can not kill a dragom with it.", "none", "none", "Retry", "none", "none", "none", "none", "none");
 					
 				}
 			}
