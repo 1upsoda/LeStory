@@ -1,10 +1,20 @@
 package home.lestory.model;
 
-public class UserName
+public class UserInfo
 {
 
 	public String userName;
 	
+	
+	public UserInfo()
+	{
+		
+	}
+	
+	public UserInfo(String name, int age)
+	{
+		this.userName = "";
+	}
 	public String getUserName()
 	{
 		return userName;
@@ -15,9 +25,6 @@ public class UserName
 		this.userName = userName;
 	}
 
-	public UserName(String name)
-	{
-		this.userName = "";
-	}
+	
 	
 }
