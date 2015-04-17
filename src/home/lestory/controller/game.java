@@ -140,7 +140,29 @@ public class game extends Activity
 						choice1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 						choice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 						choice4.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
-						story.setText("You dash for a fork lying on the ground, as the mighty Dragom swoops dowm to take a bite out of your flesh. You skillfully dodge his powerful jaw by twisting your body exactly 96 degrees, and you crouch dowm and grab the fork with your right hand. The terrifying creature recovers from his missed blow, and strikes agaim. He lunges at you, and you raise your left arm in defence. He sinks his teeth deep into your forearm, and you let out a cry of pain as blood drips from your free arm, and into a red puddle om the stony ground below. You clench your jaw, and swallow the paim. The determined Dragom has a firm grip om your arm, and will not relinquish it. He tugs your arm, and you feel excruciating agony as your arm is nearly pulled from it’s socket. You realize you only have seconds before he devours you. Im a panic, you grasp the fork and drive it deep into the villainous beast’s skull. He sways as he tumbles over, but his hold om your arm has slackened, so you wrench your arm free. The hideous Dragom falls to the ground with a satisfying slump, but as you clutch your injured arm, you feel like you might faint. What do you do? TL;DR:You defeated dragom, you’re bleeding out, " +username+ ". wat will u doo?");
+						story.setText("You dash for a fork lying on the ground, as the mighty Dragom swoops dowm to" 
+								+ " take a bite out of your flesh. You skillfully dodge his powerful jaw by twisting "
+								+ "your body exactly 96 degrees, and you crouch dowm and grab the fork with your right hand. "
+								+ "The terrifying creature recovers from his missed blow, and strikes agaim. He lunges at you,"
+								+ " and you raise your left arm in defence. He sinks his teeth deep into your forearm, and you "
+								+ "let out a cry of pain as blood drips from your free arm, and into a red puddle om the stony"
+								+ " ground below. You clench your jaw, and swallow the paim. The determined Dragom has a firm "
+								+ "grip om your arm, and will not relinquish it. He tugs your arm, and you feel excruciating"
+								+ " agony as your arm is nearly pulled from it’s socket. You realize you only have seconds"
+								+ " before he devours you. Im a panic, you grasp the fork and drive it deep into the"
+								+ " villainous beast’s skull. He sways as he tumbles over, but his hold om your arm has "
+								+ "slackened, so you wrench your arm free. The hideous Dragom falls to the ground with a"
+								+ " satisfying slump, but as you clutch your injured arm, you feel like you might faint."
+								+ " What do you do?                                                                "
+								+ "                                                                                  "
+								+ "                                                                                    "
+								+ "                                                                                     "
+								+ "                                                                                     "
+								+ "                                                                                     "
+								+ "                                                                                     "
+								+ "                                                                                     "
+								+ "                                                                                     "
+								+ "TL;DR:You defeated dragom, you’re bleeding out, " +username+ ". wat will u doo?");
 						choice4.setText("Inspect the Dragom");
 						choice2.setText("Contemplate writing a book about Dragoms");
 						choice1.setText("Seek medical attentiom");
@@ -159,6 +181,10 @@ public class game extends Activity
 						//1:give up hope
 						//2:contemplate book
 						//4:inspect dragom
+					}
+					else if(slideNumber == 8)
+					{
+						slideInfo(65, "Give up All Hope", "You decide this is probably not going to go anywhere good, and give up om life. Just as your last breath leaves your luscious, pink, plump lips you hear the footsteps of a medic rum inside- Oh too late, you crap out and die.", "none", "none", "retry", "none", "none", "none", "none", "none");
 					}
 					else if(slideNumber == 15)
 					{
@@ -207,16 +233,21 @@ public class game extends Activity
 					
 					slideInfo(4, "Really?", "THERE. IS. NO. KNIFE!", "none", "none", "retry", "none", "none", "none", "none", "none");
 				}
-				else if(slideNumber == 15)
-				{
-					
-					slideInfo(5, "How Kill Dragom?", "Different ways are available. To kill it. Yes.", "Fork", "Knife", "Spoom", "none", "none", "none", "none", "none");
-				}
 				else if(slideNumber == 7)
 				{
 					choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 					slideInfo(9, "Contemplate a Book", "You consider how lucky you are, ya know, to be alive. You think, “I might be famous for living through a dragom attack.” You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none", "retry", "none", "none", "Seriously though, write a book...", "none", "none");
 				}
+				else if(slideNumber == 8)
+				{
+					slideInfo(10, "Inspect Dragom", "You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, “I am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.” What do you do now?", "Call his bluff", "Play his little game", "none", "none", "Ask if he went to Harvard or Yale", "none", "none", "none");
+				}
+				else if(slideNumber == 15)
+				{
+					
+					slideInfo(5, "How Kill Dragom?", "Different ways are available. To kill it. Yes.", "Fork", "Knife", "Spoom", "none", "none", "none", "none", "none");
+				}
+				
 				
 			}
 		});
@@ -240,6 +271,15 @@ public class game extends Activity
 				}
 				
 				
+				else if(slideNumber == 9 || slideNumber == 65 || slideNumber == 67 || slideNumber == 68 || slideNumber == 69 || slideNumber == 70)
+				{
+					slideNumber = 2;
+					hasPickle = false;
+					Intent returnIntent = new Intent();
+					setResult(RESULT_OK, returnIntent);
+					finish();
+				}
+				
 			}
 		});
 		choice4.setOnClickListener(new View.OnClickListener()
@@ -252,6 +292,11 @@ public class game extends Activity
 				{
 					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 					slideInfo(10, "Inspect Dragom", "You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, “I am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.” What do you do now?", "Call his bluff", "Play his little game", "none", "none", "Ask if he went to Harvard or Yale", "none", "none", "none");
+
+				}
+				else if(slideNumber == 8)
+				{
+					slideInfo(9, "Contemplate a Book", "You consider how lucky you are, ya know, to be alive. You think, “I might be famous for living through a dragom attack.” You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none", "retry", "none", "none", "Seriously though, write a book...", "none", "none");
 
 				}
 			}
@@ -275,7 +320,22 @@ public class game extends Activity
 			@Override
 			public void onClick(View currentView)
 			{
-				// TODO Auto-generated method stub
+				if(slideNumber == 9)
+				{
+					slideInfo(67, "Write a Book", "As your soul floats up to heavem, you realize you cannot write anything, because you are dead.", "none", "none", "Retry", "none", "none", "Continue to heavem", "none", "none");
+				}
+				else if(slideNumber == 67)
+				{
+					slideInfo(68, "Heavem", "As your soul arrives im heavem, you look around and see [classified]. You feel happy, and content with your life, except that you never wrote that book, and now will never be famous. Too bad, so sad. NOW STOP DELAYING YOUR NEXT ATTEMPT AT THE GAME, ALREADY!", "none", "none", "Retry", "none", "none", "You are going to write that book!", "none", "none");
+				}
+				else if(slideNumber == 68)
+				{
+					slideInfo(69, "Write the dang book", "You decide to sell your soul to the devil, in order to continue living long enough to finish writing the book. Im fact, your story has so much more to it, now that you can include the fact that Heavem, Satam, and God exist. Or perhaps this is all going through your head as your braim releases chemicals to make you feel better, because you never wrote that book...", "none", "none", "Retry", "none", "none", "I'm not giving up!", "none", "none");
+				}
+				else if(slideNumber == 69) /* heh heh*/
+				{
+					slideInfo(70, "Continue Writing the book", "You don’t care what psychedelic drugs are going through your head (for some completely unrelated, unknowm reasom), you are writing the book. You force your braim to empty itself of the idea of death, and therefore become immortal. With this you resurrect right next to the dragom and kill him instantaneously with your pure awesomeness, I guess what they say is true, the mind IS stronger tham the body. But what will you write your book about?", "Living through the dragom attack.", "…or you could retry, already.", "Forcing yourself to live again.", "none", "none", "none", "none", "none");
+				}
 			}
 		});
 		bigChoice1.setOnClickListener(new View.OnClickListener()
