@@ -128,10 +128,12 @@ public class game extends Activity
 			@Override
 			public void onClick(View currentView)
 			{
-				switch(slideNumber)
-				{
-					case 2:slideInfo(4, "You sleep", "you sleep and get kill by dragom, nice one " +username+ ".", "none", "none", "retry", "none", "none", "none", "none", "none");break;
-					case 5:
+				
+					if(slideNumber == 2)
+					{
+						slideInfo(4, "You sleep", "you sleep and get kill by dragom, nice one " +username+ ".", "none", "none", "retry", "none", "none", "none", "none", "none");
+					}
+					else if(slideNumber == 5)
 					{
 						setTitle("Kill with Fork");
 						story.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
@@ -150,21 +152,24 @@ public class game extends Activity
 						//1: seek medical attentiom
 						//2:write book
 						//4:inspect
-					} break;
-					case 7:
+					} 
+					else if(slideNumber == 7)
 					{
 						slideInfo(8, "Seek Medical Attentiom", "You press the “E” key in your mental keyboard to call out “Medic” in the hopes that someone om your team will come to your aid. You realize that you were never actually om a team, so this whole debacle is in vaim.", "Give up all hope...", "Contemplate writing book about dragoms", "none", "Inspect Dragom", "none", "none", "none", "none");
 						//1:give up hope
 						//2:contemplate book
 						//4:inspect dragom
-					} break;
-					case 15:
+					}
+					else if(slideNumber == 15)
 					{
 						hasPickle = true;
 						slideInfo(73, "Get Pickle", "Good job " +username+ "! You got a pickle now, huzzah. I am pretty sure you have won the game.", "Return to other options", "none", "none", "none", "Kill dragom with pickle", "none", "none", "none");
-					} break;
-					case 73:slideInfo(5, "How Kill Dragom?", "Different ways are available. To kill it. Yes.", "Fork", "Knife", "Spoom", "none", "none", "none", "none", "none"); break;
-				}
+					}
+					else if(slideNumber == 73)
+					{
+						slideInfo(5, "How Kill Dragom?", "Different ways are available. To kill it. Yes.", "Fork", "Knife", "Spoom", "none", "none", "none", "none", "none");
+					}
+				
 			}
 		});
 		choice2.setOnClickListener(new View.OnClickListener()
