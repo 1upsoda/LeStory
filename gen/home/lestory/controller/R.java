@@ -20,16 +20,18 @@ public final class R {
     }
     public static final class id {
         public static final int Story=0x7f070001;
-        public static final int bigChoice1=0x7f07000b;
-        public static final int bigChoice2=0x7f07000c;
-        public static final int choice1=0x7f070005;
-        public static final int choice2=0x7f070006;
-        public static final int choice3=0x7f070007;
-        public static final int choice4=0x7f070009;
-        public static final int choice5=0x7f070008;
-        public static final int choice6=0x7f07000a;
+        public static final int bigChoice1=0x7f07000d;
+        public static final int bigChoice2=0x7f07000e;
+        public static final int choice1=0x7f070007;
+        public static final int choice2=0x7f070008;
+        public static final int choice3=0x7f070009;
+        public static final int choice4=0x7f07000a;
+        public static final int choice5=0x7f07000b;
+        public static final int choice6=0x7f07000c;
         public static final int layout=0x7f070000;
         public static final int nameField=0x7f070004;
+        public static final int scrollView1=0x7f070005;
+        public static final int scrollView2=0x7f070006;
         public static final int startButton=0x7f070003;
         public static final int textView1=0x7f070002;
     }

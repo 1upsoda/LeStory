@@ -6,105 +6,108 @@
     android:background="@color/black"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <TextView
-        android:id="@+id/Story"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/choice1"
-        android:layout_alignParentLeft="true"
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="@string/brokenText"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:layout_centerVertical="true" >
 
-    <Button
-        android:id="@+id/choice1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="25dp"
-        android:text="Button"
-        android:textColor="@color/white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/choice2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/Story"
-        android:layout_marginRight="25dp"
-        android:text="Button"
-        android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/Story"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brokenText"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </ScrollView>
 
-    <Button
-        android:id="@+id/choice3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/choice2"
-        android:layout_alignBottom="@+id/choice2"
-        android:layout_alignParentEnd="false"
-        android:layout_centerHorizontal="true"
-        android:text="Button"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/choice5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/choice1"
-        android:layout_below="@+id/choice1"
-        android:layout_marginTop="15dp"
-        android:text="Button"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/choice4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/choice5"
-        android:layout_alignBottom="@+id/choice5"
-        android:layout_alignLeft="@+id/choice3"
-        android:text="Button"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/choice6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/choice2"
-        android:layout_alignTop="@+id/choice4"
-        android:text="Button"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/bigChoice1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/choice5"
-        android:layout_marginTop="15dp"
-        android:layout_toLeftOf="@+id/choice4"
-        android:text="Button"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
+        android:layout_centerVertical="true" >
 
-    <Button
-        android:id="@+id/bigChoice2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/bigChoice1"
-        android:layout_toRightOf="@+id/choice4"
-        android:text="Button"
-        android:textColor="@color/white"
-        android:visibility="invisible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/choice1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/choice2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/choice3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="false"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/choice4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/choice5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/choice6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/bigChoice1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/bigChoice2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package home.lestory.controller;
 
 
 
+import home.lestory.model.UserInfo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class StartActivity extends Activity
 
 	private Button startButton;
 	public EditText userNameField;
-	
+	public UserInfo newUser;
 	public String userName;
 	
 	
@@ -26,7 +27,7 @@ public class StartActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		
+		newUser = new UserInfo();
 		userName = "JIMMY JOHN";
 		startButton = (Button) findViewById(R.id.startButton);
 		userNameField = (EditText) findViewById(R.id.nameField);
@@ -35,7 +36,7 @@ public class StartActivity extends Activity
 		
 
 	}
-	
+
 	private void setupListeners()
 	{
 		startButton.setOnClickListener(new View.OnClickListener()
@@ -48,7 +49,7 @@ public class StartActivity extends Activity
 				
 
 				userName = userNameField.getText().toString();
-				
+//				newUser.setUserName(userName);
 				Intent otherScreenIntent = new Intent(currentView.getContext(), game.class);
 				otherScreenIntent.putExtra("name", userName);
 				startActivityForResult(otherScreenIntent, 0);

@@ -1,6 +1,7 @@
 package home.lestory.controller;
 
 
+import home.lestory.model.UserInfo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class game extends Activity
 	private int slideNumber;
 	private boolean hasPickle;
 	private int timesTriedToGetKnife;
+	private UserInfo newUser;
 	
 	
 	@Override
@@ -30,6 +32,7 @@ public class game extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 
+		newUser = new UserInfo();
 		slideNumber = 2;
 		timesTriedToGetKnife = 0;
 		hasPickle = false;
@@ -42,15 +45,26 @@ public class game extends Activity
 		bigChoice1 = (Button) findViewById(R.id.bigChoice1);
 		bigChoice2 = (Button) findViewById(R.id.bigChoice2);
 		String username = getIntent().getStringExtra("name"); 
-
+//		username = newUser.getUserName();
 		story = (TextView) findViewById(R.id.Story);
 		
 //		slideInfo(4, "title here", "story here", "none", "none", "none", "none", "none", "none", "none", "none");
 //		^ use this as a base for slides
+//		if the text size needs to be changed then you just change it after the method call so that you can 
+//		make sure the text is changed after it changes once
 		setupListeners();
 	}
 	public void slideInfo(int slide, String title, String storyText, String answer1, String answer2, String answer3, String answer4, String answer5, String answer6, String bigAnswer1, String bigAnswer2)
 	{
+		story.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+		choice1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		choice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		choice4.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		choice5.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		bigChoice1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		bigChoice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 		choice1.setVisibility(View.INVISIBLE);
 		choice2.setVisibility(View.INVISIBLE);
 		choice3.setVisibility(View.INVISIBLE);
@@ -59,6 +73,14 @@ public class game extends Activity
 		choice6.setVisibility(View.INVISIBLE);
 		bigChoice1.setVisibility(View.INVISIBLE);
 		bigChoice2.setVisibility(View.INVISIBLE);
+		choice1.setText("");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+		choice5.setText("");
+		choice6.setText("");
+		bigChoice1.setText("");
+		bigChoice2.setText("");
 		slideNumber = slide;
 		setTitle(title);
 		story.setText(storyText);
@@ -136,22 +158,22 @@ public class game extends Activity
 					else if(slideNumber == 5)
 					{
 						setTitle("Kill with Fork");
-						story.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
+//						story.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
 						choice1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 						choice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 						choice4.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
-						story.setText("You dash for a fork lying on the ground, as the mighty Dragom swoops dowm to" 
+						story.setText("You dash for a fork lying on the ground, the mighty Dragom swoops dowm to" 
 								+ " take a bite out of your flesh. You skillfully dodge his powerful jaw by twisting "
-								+ "your body exactly 96 degrees, and you crouch dowm and grab the fork with your right hand. "
+								+ "your body exactly 96 degrees, and you crouch dowm to grab the fork with your right hand. "
 								+ "The terrifying creature recovers from his missed blow, and strikes agaim. He lunges at you,"
-								+ " and you raise your left arm in defence. He sinks his teeth deep into your forearm, and you "
-								+ "let out a cry of pain as blood drips from your free arm, and into a red puddle om the stony"
-								+ " ground below. You clench your jaw, and swallow the paim. The determined Dragom has a firm "
+								+ " but you raise your left arm in defence. He sinks his teeth deep into your forearm, and you "
+								+ "let out a cry of pain as blood drips from your free arm, into a red puddle om the stony"
+								+ " ground below. You clench your jaw, to swallow the paim. The determined Dragom has a firm "
 								+ "grip om your arm, and will not relinquish it. He tugs your arm, and you feel excruciating"
-								+ " agony as your arm is nearly pulled from it’s socket. You realize you only have seconds"
+								+ " agony as it is nearly pulled from it’s socket. You realize you only have seconds"
 								+ " before he devours you. Im a panic, you grasp the fork and drive it deep into the"
-								+ " villainous beast’s skull. He sways as he tumbles over, but his hold om your arm has "
-								+ "slackened, so you wrench your arm free. The hideous Dragom falls to the ground with a"
+								+ " villainous beast’s skull. He sways as he tumbles over, releasing your arm from his "
+								+ "vice-like grip. The hideous Dragom falls to the ground with a"
 								+ " satisfying slump, but as you clutch your injured arm, you feel like you might faint."
 								+ " What do you do?                                                                "
 								+ "                                                                                  "
@@ -235,8 +257,9 @@ public class game extends Activity
 				}
 				else if(slideNumber == 7)
 				{
-					choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
+					
 					slideInfo(9, "Contemplate a Book", "You consider how lucky you are, ya know, to be alive. You think, “I might be famous for living through a dragom attack.” You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none", "retry", "none", "none", "Seriously though, write a book...", "none", "none");
+					choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
 				else if(slideNumber == 8)
 				{
@@ -290,9 +313,9 @@ public class game extends Activity
 			{
 				if(slideNumber == 7)
 				{
-					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
+					
 					slideInfo(10, "Inspect Dragom", "You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, “I am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.” What do you do now?", "Call his bluff", "Play his little game", "none", "none", "Ask if he went to Harvard or Yale", "none", "none", "none");
-
+					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
 				else if(slideNumber == 8)
 				{
@@ -323,6 +346,7 @@ public class game extends Activity
 				if(slideNumber == 9)
 				{
 					slideInfo(67, "Write a Book", "As your soul floats up to heavem, you realize you cannot write anything, because you are dead.", "none", "none", "Retry", "none", "none", "Continue to heavem", "none", "none");
+					choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
 				else if(slideNumber == 67)
 				{
@@ -335,6 +359,9 @@ public class game extends Activity
 				else if(slideNumber == 69) /* heh heh*/
 				{
 					slideInfo(70, "Continue Writing the book", "You don’t care what psychedelic drugs are going through your head (for some completely unrelated, unknowm reasom), you are writing the book. You force your braim to empty itself of the idea of death, and therefore become immortal. With this you resurrect right next to the dragom and kill him instantaneously with your pure awesomeness, I guess what they say is true, the mind IS stronger tham the body. But what will you write your book about?", "Living through the dragom attack.", "…or you could retry, already.", "Forcing yourself to live again.", "none", "none", "none", "none", "none");
+					choice1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
+					choice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
+					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
 			}
 		});
