@@ -3,13 +3,20 @@ package home.lestory.controller;
 
 import home.lestory.model.UserInfo;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 
@@ -24,6 +31,8 @@ public class game extends Activity
 	private boolean hasPickle;
 	private int timesTriedToGetKnife;
 	private UserInfo newUser;
+	private ScrollView textScroll, buttonScroll;
+	
 	
 	
 	@Override
@@ -32,7 +41,14 @@ public class game extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 
+		
+		textScroll = (ScrollView) findViewById(R.id.textScroll);
+		buttonScroll = (ScrollView) findViewById(R.id.buttonScroll);
 		newUser = new UserInfo();
+		/**
+		 * gets the height of the entire screen
+		 */
+		
 		slideNumber = 2;
 		timesTriedToGetKnife = 0;
 		hasPickle = false;
@@ -47,12 +63,13 @@ public class game extends Activity
 		String username = getIntent().getStringExtra("name"); 
 //		username = newUser.getUserName();
 		story = (TextView) findViewById(R.id.Story);
-		
+//		updateDisplay();
 //		slideInfo(4, "title here", "story here", "none", "none", "none", "none", "none", "none", "none", "none");
 //		^ use this as a base for slides
 //		if the text size needs to be changed then you just change it after the method call so that you can 
 //		make sure the text is changed after it changes once
 		setupListeners();
+		
 	}
 	public void slideInfo(int slide, String title, String storyText, String answer1, String answer2, String answer3, String answer4, String answer5, String answer6, String bigAnswer1, String bigAnswer2)
 	{
@@ -124,7 +141,39 @@ public class game extends Activity
 		choice6.setText(answer6);
 		bigChoice1.setText(bigAnswer1);
 		bigChoice2.setText(bigAnswer2);
+		textScroll.scrollTo(0, 0);
+		buttonScroll.scrollTo(0, 0);
 	}
+	
+	
+	/**
+	 * a very complicated and broken way to attempt to make the scrolls be half size
+	 * (app was originally a relative layout but I decided it would be easier to just convert to linear)
+	 */
+//	private void updateDisplay()
+//	{
+//		ScrollView textScroll = new ScrollView(this);
+//		ScrollView buttonScroll = new ScrollView(this);
+//		Display dis = getWindowManager().getDefaultDisplay();
+//		DisplayMetrics dm = new DisplayMetrics();
+//		getWindowManager().getDefaultDisplay().getMetrics(dm);
+//		int height3 = dm.heightPixels;
+//		int heightHalf = (height3/2);
+//		//int height = 
+//		Point cow = new Point();
+//		dis.getSize(cow);
+//		int height = (int) Math.round(cow.y / 2);
+////		int height2 = dis.heightPixels;
+//				//.getWidth() * 50 / 100;
+//		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,heightHalf);
+////		RelativeLayout.LayoutParams below = new RelativeLayout.LayoutParams(lp);
+//		textScroll.setId(1);
+//		textScroll.setLayoutParams(lp);
+//		lp.addRule(RelativeLayout.BELOW, textScroll.getId());
+//		buttonScroll.setLayoutParams(lp);
+//		buttonScroll.layout(0, textScroll.getBottom(), 0, 0);
+////		buttonScroll.setTop(textScroll.getBottom());
+//	}
 	private void setupListeners()
 	{
 		slideNumber =2;
@@ -196,6 +245,8 @@ public class game extends Activity
 						//1: seek medical attentiom
 						//2:write book
 						//4:inspect
+						textScroll.scrollTo(0, 0);
+						buttonScroll.scrollTo(0, 0);
 					} 
 					else if(slideNumber == 7)
 					{
@@ -218,6 +269,7 @@ public class game extends Activity
 						slideInfo(5, "How Kill Dragom?", "Different ways are available. To kill it. Yes.", "Fork", "Knife", "Spoom", "none", "none", "none", "none", "none");
 					}
 				
+					
 			}
 		});
 		choice2.setOnClickListener(new View.OnClickListener()
@@ -322,6 +374,7 @@ public class game extends Activity
 					slideInfo(9, "Contemplate a Book", "You consider how lucky you are, ya know, to be alive. You think, “I might be famous for living through a dragom attack.” You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none", "retry", "none", "none", "Seriously though, write a book...", "none", "none");
 
 				}
+				
 			}
 		});
 		choice5.setOnClickListener(new View.OnClickListener()
@@ -335,6 +388,7 @@ public class game extends Activity
 					slideInfo(4, "No.", "Well, while a pickle may be the most amazing thing ever, you can not kill a dragom with it.", "none", "none", "Retry", "none", "none", "none", "none", "none");
 					
 				}
+				
 			}
 		});
 		choice6.setOnClickListener(new View.OnClickListener()
@@ -363,6 +417,7 @@ public class game extends Activity
 					choice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
+				
 			}
 		});
 		bigChoice1.setOnClickListener(new View.OnClickListener()
@@ -372,6 +427,8 @@ public class game extends Activity
 			public void onClick(View currentView)
 			{
 				// TODO Auto-generated method stub
+				textScroll.scrollTo(0, 0);
+				buttonScroll.scrollTo(0, 0);
 			}
 		});
 		bigChoice2.setOnClickListener(new View.OnClickListener()
@@ -381,6 +438,8 @@ public class game extends Activity
 			public void onClick(View currentView)
 			{
 				// TODO Auto-generated method stub
+				textScroll.scrollTo(0, 0);
+				buttonScroll.scrollTo(0, 0);
 			}
 		});
 	}
