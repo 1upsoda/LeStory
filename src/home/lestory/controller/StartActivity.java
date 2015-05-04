@@ -5,16 +5,20 @@ package home.lestory.controller;
 import home.lestory.model.UserInfo;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class StartActivity extends Activity implements SensorEventListener
@@ -29,6 +33,10 @@ public class StartActivity extends Activity implements SensorEventListener
 	private SensorManager orientation;
 	private float[] orientationValues, rThing;
 	private Sensor orientator;
+	private int change;
+	private int startPosition;
+	private int newPosition, currentYaw;
+	private HorizontalScrollView sideScroll;
 	
 	/**
 	 * USE THE GYROSCOPE SENSOR AND JUST
@@ -51,6 +59,7 @@ public class StartActivity extends Activity implements SensorEventListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
+		sideScroll = (HorizontalScrollView) findViewById(R.id.sideScroll);
 		orientation = (SensorManager)getSystemService(SENSOR_SERVICE);
 		orientator = orientation.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
 		orientation.registerListener(this, orientator, SensorManager.SENSOR_DELAY_FASTEST);
@@ -60,13 +69,14 @@ public class StartActivity extends Activity implements SensorEventListener
 		startButton = (Button) findViewById(R.id.startButton);
 		userNameField = (EditText) findViewById(R.id.nameField);
 		textView2 = (TextView) findViewById(R.id.textView2);
+		change = 0;
 		/**
 		 * this will be the way to get your orientation so you can have the scroll thing work
 		 */
 		rThing = new float[9];
 //		SensorManager.getOrientation(rThing, orientationValues);
 		setupListeners();
-		
+		startPosition = (Math.round(orientationValues[0]));
 
 	}
 
@@ -101,6 +111,8 @@ public class StartActivity extends Activity implements SensorEventListener
          super.onPause();
          orientation.unregisterListener(this);
      }
+     
+     
 
 	@Override
 	public void onSensorChanged(SensorEvent event)
@@ -122,9 +134,27 @@ public class StartActivity extends Activity implements SensorEventListener
         orientationValues[1] = (float) Math.toDegrees(orientationValues[1]);
         orientationValues[2] = (float) Math.toDegrees(orientationValues[2]);
 
+        // yaw is if held vertical it is rotation on the vertical axis so turning it left and right
         textView2.setText(" Yaw: " + orientationValues[0] + "\n Pitch: "
-                + orientationValues[1] + "\n Roll (not used): "
+                + orientationValues[1] + "\n Roll: "
                 + orientationValues[2]);
+        
+        if(orientationValues[0] < 0)
+        {
+        	currentYaw = Math.round((180-(Math.abs(orientationValues[0]))) + 180);
+        }
+        else
+        {
+        	currentYaw = Math.round(orientationValues[0]);
+        }
+        int pixel = (int)((currentYaw/360)*sideScroll.getBottom());
+//        Resources r = getResources();
+//        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixel, r.getDisplayMetrics());
+//        pixel = Math.round(px);
+        /**
+         * this needs to be made better somehow, it doesn't scroll correctly
+         */
+        sideScroll.scrollTo(pixel, 0);
 //		SensorManager.getOrientation(rThing, orientationValues); // this is breaking the app//
 //		textView2.setText("" + SensorManager. + ", " + SensorManager.AXIS_Y +", " + SensorManager.AXIS_Z);
 //		textView2.setText("" + SensorManager.getOrientation(rThing, orientationValues));
