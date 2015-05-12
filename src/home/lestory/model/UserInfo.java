@@ -3,8 +3,7 @@ package home.lestory.model;
 public class UserInfo
 {
 
-	private String userName;
-	private int age;
+	public String userName;
 	
 	
 	public UserInfo()
@@ -14,8 +13,7 @@ public class UserInfo
 	
 	public UserInfo(String name, int age)
 	{
-		this.userName = name;
-		this.setAge(age);
+		this.userName = "";
 	}
 	public String getUserName()
 	{
@@ -25,16 +23,6 @@ public class UserInfo
 	public void setUserName(String userName)
 	{
 		this.userName = userName;
-	}
-
-	public int getAge()
-	{
-		return age;
-	}
-
-	public void setAge(int age)
-	{
-		this.age = age;
 	}
 
 	
