@@ -11,6 +11,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -135,10 +136,10 @@ public class StartActivity extends Activity implements SensorEventListener
         orientationValues[2] = (float) Math.toDegrees(orientationValues[2]);
 
         // yaw is if held vertical it is rotation on the vertical axis so turning it left and right
-        textView2.setText(" Yaw: " + orientationValues[0] + "\n Pitch: "
-                + orientationValues[1] + "\n Roll: "
-                + orientationValues[2]);
-        
+//        textView2.setText(" Yaw: " + orientationValues[0] + "\n Pitch: "
+//                + orientationValues[1] + "\n Roll: "
+//                + orientationValues[2]);
+//        
         if(orientationValues[0] < 0)
         {
         	currentYaw = Math.round((180-(Math.abs(orientationValues[0]))) + 180);
@@ -147,19 +148,36 @@ public class StartActivity extends Activity implements SensorEventListener
         {
         	currentYaw = Math.round(orientationValues[0]);
         }
-        int pixel = (int)((currentYaw/360)*sideScroll.getBottom());
+    
+        DisplayMetrics displayMetrics = getBaseContext().getResources().getDisplayMetrics();
+        int pixel = (int)(((double) currentYaw/360)*(displayMetrics.xdpi*4));
+        textView2.setText("" + pixel + "" + displayMetrics.density + "");
+        
+        // idea, set some text to the sideScroll.getBottom to see what pixels the side scroll is in length
 //        Resources r = getResources();
 //        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixel, r.getDisplayMetrics());
 //        pixel = Math.round(px);
         /**
          * this needs to be made better somehow, it doesn't scroll correctly
          */
+//        textView2.setText("" + pixel + "");
         sideScroll.scrollTo(pixel, 0);
 //		SensorManager.getOrientation(rThing, orientationValues); // this is breaking the app//
 //		textView2.setText("" + SensorManager. + ", " + SensorManager.AXIS_Y +", " + SensorManager.AXIS_Z);
 //		textView2.setText("" + SensorManager.getOrientation(rThing, orientationValues));
 	}
 
+	public int dpToPx(int dp) {
+	    DisplayMetrics displayMetrics = getBaseContext().getResources().getDisplayMetrics();
+	    int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));       
+	    return px;
+	}
+	public int pxToDp(int px) 
+	{
+	    DisplayMetrics displayMetrics = getBaseContext().getResources().getDisplayMetrics();
+	    int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+	    return dp;
+	}
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy)
