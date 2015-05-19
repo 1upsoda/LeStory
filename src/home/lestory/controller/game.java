@@ -201,7 +201,15 @@ public class game extends Activity
 
 				if (slideNumber == 2)
 				{
-					slideInfo(4, "You sleep", "you sleep and get kill by dragom, nice one " + username + ".", "none", "none", "retry", "none", "none", "none", "none", "none");
+					slideInfo(4, "You sleep", "you sleep and get kill by dragom, nice one " + username + ".", "retry", "none", "none", "none", "none", "none", "none", "none");
+				}
+				else if(slideNumber == 4)
+				{
+					slideNumber = 2;
+					hasPickle = false;
+					Intent returnIntent = new Intent();
+					setResult(RESULT_OK, returnIntent);
+					finish();	
 				}
 				else if (slideNumber == 5)
 				{
@@ -214,13 +222,13 @@ public class game extends Activity
 							+ "your body exactly 96 degrees, and you crouch dowm to grab the fork with your right hand. " + "The terrifying creature recovers from his missed blow, and strikes agaim. He lunges at you,"
 							+ " but you raise your left arm in defence. He sinks his teeth deep into your forearm, and you " + "let out a cry of pain as blood drips from your free arm, into a red puddle om the stony"
 							+ " ground below. You clench your jaw, to swallow the paim. The determined Dragom has a firm " + "grip om your arm, and will not relinquish it. He tugs your arm, and you feel excruciating"
-							+ " agony as it is nearly pulled from itís socket. You realize you only have seconds" + " before he devours you. Im a panic, you grasp the fork and drive it deep into the"
-							+ " villainous beastís skull. He sways as he tumbles over, releasing your arm from his " + "vice-like grip. The hideous Dragom falls to the ground with a" + " satisfying slump, but as you clutch your injured arm, you feel like you might faint."
+							+ " agony as it is nearly pulled from it‚Äôs socket. You realize you only have seconds" + " before he devours you. Im a panic, you grasp the fork and drive it deep into the"
+							+ " villainous beast‚Äôs skull. He sways as he tumbles over, releasing your arm from his " + "vice-like grip. The hideous Dragom falls to the ground with a" + " satisfying slump, but as you clutch your injured arm, you feel like you might faint."
 							+ " What do you do?                                                                " + "                                                                                  "
 							+ "                                                                                    " + "                                                                                     "
 							+ "                                                                                     " + "                                                                                     "
 							+ "                                                                                     " + "                                                                                     "
-							+ "                                                                                     " + "TL;DR:You defeated dragom, youíre bleeding out, " + username + ". wat will u doo?");
+							+ "                                                                                     " + "TL;DR:You defeated dragom, you‚Äôre bleeding out, " + username + ". wat will u doo?");
 					choice4.setText("Inspect the Dragom");
 					choice2.setText("Contemplate writing a book about Dragoms");
 					choice1.setText("Seek medical attentiom");
@@ -237,7 +245,7 @@ public class game extends Activity
 				}
 				else if (slideNumber == 7)
 				{
-					slideInfo(8, "Seek Medical Attentiom", "You press the ìEî key in your mental keyboard to call out ìMedicî in the hopes that someone om your team will come to your aid. You realize that you were never actually om a team, so this whole debacle is in vaim.",
+					slideInfo(8, "Seek Medical Attentiom", "You press the ‚ÄúE‚Äù key in your mental keyboard to call out ‚ÄúMedic‚Äù in the hopes that someone om your team will come to your aid. You realize that you were never actually om a team, so this whole debacle is in vaim.",
 							"Give up all hope...", "Contemplate writing book about dragoms", "none", "Inspect Dragom", "none", "none", "none", "none");
 					// 1:give up hope
 					// 2:contemplate book
@@ -300,7 +308,7 @@ public class game extends Activity
 				{
 
 					slideInfo(9, "Contemplate a Book",
-							"You consider how lucky you are, ya know, to be alive. You think, ìI might be famous for living through a dragom attack.î You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none",
+							"You consider how lucky you are, ya know, to be alive. You think, ‚ÄúI might be famous for living through a dragom attack.‚Äù You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none",
 							"retry", "none", "none", "Seriously though, write a book...", "none", "none");
 					choice6.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
@@ -309,7 +317,7 @@ public class game extends Activity
 					slideInfo(
 							10,
 							"Inspect Dragom",
-							"You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, ìI am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.î What do you do now?",
+							"You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, ‚ÄúI am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.‚Äù What do you do now?",
 							"Call his bluff", "Play his little game", "none", "none", "Ask if he went to Harvard or Yale", "none", "none", "none");
 				}
 				else if (slideNumber == 15)
@@ -326,15 +334,7 @@ public class game extends Activity
 			@Override
 			public void onClick(View currentView)
 			{
-				if (slideNumber == 4)
-				{
-					slideNumber = 2;
-					hasPickle = false;
-					Intent returnIntent = new Intent();
-					setResult(RESULT_OK, returnIntent);
-					finish();
-				}
-				else if (slideNumber == 5)
+				if (slideNumber == 5)
 				{
 					slideInfo(4, "Kill with spoom", "wat were u thinking? you are dead now.", "none", "none", "Retry", "none", "none", "none", "none", "none");
 				}
@@ -362,14 +362,14 @@ public class game extends Activity
 					slideInfo(
 							10,
 							"Inspect Dragom",
-							"You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, ìI am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.î What do you do now?",
+							"You walk up to the dragom, and have am uh-oh. He is still breathing. He stands up, and pulls the fork from his head. He says, ‚ÄúI am rather impressed by you, Humam. I will now tell you a riddle, and if you guess right, I will not eat you.‚Äù What do you do now?",
 							"Call his bluff", "Play his little game", "none", "none", "Ask if he went to Harvard or Yale", "none", "none", "none");
 					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 				}
 				else if (slideNumber == 8)
 				{
 					slideInfo(9, "Contemplate a Book",
-							"You consider how lucky you are, ya know, to be alive. You think, ìI might be famous for living through a dragom attack.î You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none",
+							"You consider how lucky you are, ya know, to be alive. You think, ‚ÄúI might be famous for living through a dragom attack.‚Äù You are so preoccupied, you forget you are bleeding out. As you pass out, your head hits a rock, and you die.", "none", "none",
 							"retry", "none", "none", "Seriously though, write a book...", "none", "none");
 
 				}
@@ -422,8 +422,8 @@ public class game extends Activity
 					slideInfo(
 							70,
 							"Continue Writing the book",
-							"You donít care what psychedelic drugs are going through your head (for some completely unrelated, unknowm reasom), you are writing the book. You force your braim to empty itself of the idea of death, and therefore become immortal. With this you resurrect right next to the dragom and kill him instantaneously with your pure awesomeness, I guess what they say is true, the mind IS stronger tham the body. But what will you write your book about?",
-							"Living through the dragom attack.", "Öor you could retry, already.", "Forcing yourself to live again.", "none", "none", "none", "none", "none");
+							"You don‚Äôt care what psychedelic drugs are going through your head (for some completely unrelated, unknowm reasom), you are writing the book. You force your braim to empty itself of the idea of death, and therefore become immortal. With this you resurrect right next to the dragom and kill him instantaneously with your pure awesomeness, I guess what they say is true, the mind IS stronger tham the body. But what will you write your book about?",
+							"Living through the dragom attack.", "‚Ä¶or you could retry, already.", "Forcing yourself to live again.", "none", "none", "none", "none", "none");
 					choice1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 					choice2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
 					choice3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 8);
